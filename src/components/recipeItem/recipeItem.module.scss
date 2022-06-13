@@ -1,0 +1,19 @@
+.rItem{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.rImage{
+    width: 100%;
+}
+
+.rContent{
+    padding: 10px;
+    font-size: 16px;
+}
+
+.rTitle{
+    font-size: 20px;
+    padding-bottom: 10px;
+}

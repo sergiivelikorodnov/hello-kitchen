@@ -1,21 +1,27 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RecipesType } from "types/recipe";
-import { RecipesStateType } from "types/state";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RecipesType } from '../../types/recipe'
+import { RecipesStateType } from '../../types/state'
 
 const initialState: RecipesStateType = {
-    recipes: []
-};
+  recipes: [],
+  loading: true
+}
 
 const randomRecipesSlice = createSlice({
-  name: "recipes",
+  name: 'recipes',
   initialState,
   reducers: {
     getRecipes(state, action: PayloadAction<RecipesType>) {
-      state.recipes = action.payload.recipes;
+      state.recipes = action.payload.recipes
+      state.loading = false
     },
-  },
-});
+    setLoading(state) {
+      state.loading = true
+    }
 
-export const { getRecipes } = randomRecipesSlice.actions;
+  }
+})
 
-export default randomRecipesSlice.reducer;
+export const { getRecipes, setLoading } = randomRecipesSlice.actions
+
+export default randomRecipesSlice.reducer

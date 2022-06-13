@@ -1,7 +1,6 @@
-import { SingleRecipeType } from './recipe';
+import { SingleRecipeType } from './recipe'
 
 export type RecipesStateType = {
-  recipes: SingleRecipeType[];
-};
-
-
+  recipes: SingleRecipeType[]
+  loading: boolean
+}

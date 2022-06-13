@@ -1,7 +1,8 @@
 type ExtendedIngredientType = {
   aisle: string
   amount: number
-  consitency: string
+  consistency: string
+  nameClean: string
   id: number
   image: string
   measures: {
@@ -36,54 +37,90 @@ type ProductMatchType = {
 }
 
 type WinePairingType = {
-    pairedWines: string[],
-    pairingText: string,
-    productMatches: ProductMatchType[]
+  pairedWines: string[]
+  pairingText: string
+  productMatches: ProductMatchType[]
+}
+
+type AnalyzedInstructionsIngredientType = {
+  id: number
+  name: string
+  localizedName: string
+  image: string
+}
+
+type AnalyzedInstructionsEquipmentType = {
+  id: number
+  name: string
+  localizedName: string
+  image: string
+  temperature?: {
+    number: number
+    unit: string
+  }
+}
+
+type AnalyzedInstructionsStepType = {
+  number: number
+  step: string
+  ingredients: AnalyzedInstructionsIngredientType[]
+  equipment: AnalyzedInstructionsEquipmentType[]
+  length?: { number: number; unit: string }
+}
+
+type AnalyzedInstructionsType = {
+  name: string
+  steps: AnalyzedInstructionsStepType[]
 }
 
 export type SingleRecipeType = {
-    id: 716429,
-    title: string,
-    image: string,
-    imageType: string,
-    servings: number,
-    readyInMinutes: number,
-    license: string,
-    sourceName: string,
-    sourceUrl: string,
-    spoonacularSourceUrl: string,
-    aggregateLikes: number,
-    healthScore: number,
-    spoonacularScore: number,
-    pricePerServing: number,
-    analyzedInstructions: string[],
-    cheap: boolean,
-    creditsText: string,
-    cuisines: string[],
-    dairyFree: boolean,
-    diets: string[],
-    gaps: string,
-    glutenFree: boolean,
-    instructions: string,
-    ketogenic: boolean,
-    lowFodmap: boolean,
-    occasions: string[],
-    sustainable: boolean,
-    vegan: boolean,
-    vegetarian: boolean,
-    veryHealthy: boolean,
-    veryPopular: boolean,
-    whole30: boolean,
-    weightWatcherSmartPoints: number,
-    dishTypes: string[],
+  id: number
+  title: string
+  image: string
+  imageType: string
+  servings: number
+  readyInMinutes: number
+  license?: string
+  sourceName: string | null
+  sourceUrl: string
+  openLicense: number
 
-    extendedIngredients:ExtendedIngredientType[],
+  spoonacularSourceUrl: string
+  aggregateLikes: number
+  healthScore: number
+  spoonacularScore?: number
+  pricePerServing: number
+  analyzedInstructions: AnalyzedInstructionsType[]
+  cheap: boolean
+  creditsText: string | null
+  cuisines: string[]
+  dairyFree: boolean
+  diets: string[]
+  gaps: string
 
-    summary: string,
+  preparationMinutes: number
+  cookingMinutes: number
+  glutenFree: boolean
+  instructions: string
+  ketogenic?: boolean
+  lowFodmap: boolean
+  occasions: string[]
+  sustainable: boolean
+  vegan: boolean
+  vegetarian: boolean
+  veryHealthy: boolean
+  veryPopular: boolean
+  whole30?: boolean
+  weightWatcherSmartPoints: number
+  dishTypes: string[]
+  originalId: number | null
+  extendedIngredients: ExtendedIngredientType[]
 
-    winePairing: WinePairingType
+  summary: string
+
+  winePairing?: WinePairingType
 }
 
 export type RecipesType = {
-    recipes: SingleRecipeType[]
+  recipes: SingleRecipeType[]
 }

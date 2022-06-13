@@ -1,3 +1,5 @@
+import React from 'react'
+
 function NotFound(): JSX.Element {
   return <h1>Sorry, not found</h1>
 }

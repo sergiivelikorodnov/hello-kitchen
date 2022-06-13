@@ -1,22 +1,11 @@
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from 'hooks/hooks'
-import { fetchPostsAction } from 'store/apiActions'
-import { getAllRecipes } from 'store/randomRecipesSlice/selectors'
 import { Route, Routes } from 'react-router-dom'
-import PageWrapper from 'components/pageWrapper/pageWrapper'
-import NotFound from 'pages/notFound/notFound'
-import Homepage from 'pages/homepage/homepage'
-import Recipe from 'pages/recipe/recipe'
+import React from 'react'
+import Homepage from '../../pages/homepage/homepage'
+import NotFound from '../../pages/notFound/notFound'
+import Recipe from '../../pages/recipe/recipe'
+import PageWrapper from '../pageWrapper/pageWrapper'
 
 function App(): JSX.Element {
-  const dispatch = useAppDispatch()
-  const recepies = useAppSelector(getAllRecipes)
-  console.log(recepies)
-
-  useEffect(() => {
-    dispatch(fetchPostsAction())
-  }, [dispatch])
-
   return (
     <Routes>
       <Route path='/' element={<PageWrapper />}>

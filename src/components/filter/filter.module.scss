@@ -1,0 +1,27 @@
+.sContainer{
+    display: flex;
+    width: 100%;
+    padding: 40px;
+    justify-content: space-between;
+}
+
+.sInput{
+    border-radius: var(--radii-sm);
+    border: 1px solid var(--primary);
+    height: 46px;
+    padding: 10px;
+    width: 100%;
+    padding-left: 25px;
+    color: var(--primary);
+    font-size: 17px;
+    font-family: var(--family);
+}
+
+.sInput:focus{
+    border-radius: var(--radii-sm);
+    border: 1px solid var(--primary-blue);
+}
+.sFilter{
+    display: flex;
+    gap:10px;
+}
