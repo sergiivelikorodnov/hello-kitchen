@@ -6,10 +6,12 @@ import RecipeItem from '../recipeItem/recipeItem'
 import React from 'react'
 import styles from './recipeList.module.scss'
 import { RecipesType, SingleRecipeType } from '../../types/recipe'
+import { nanoid } from 'nanoid'
+import Loader from '../loader/loader'
 
 function RecipeList(): JSX.Element {
   const dispatch = useAppDispatch()
-  const recepies = useAppSelector(getAllRecipes)
+  const recipes = useAppSelector(getAllRecipes)
   const loading = useAppSelector(getLoadingStatus)
 
   useEffect(() => {
@@ -19,9 +21,13 @@ function RecipeList(): JSX.Element {
   return (
     <div className={styles.rGrid}>
       {loading ? (
-        'Please wait'
+        <Loader />
       ) : (
-        <>{recepies && recepies.map(recipe => <RecipeItem key={recipe.id} recipe={recipe} />)}</>
+        <>
+          {recipes.map(recipe => (
+            <RecipeItem key={nanoid()} recipe={recipe} />
+          ))}
+        </>
       )}
     </div>
   )

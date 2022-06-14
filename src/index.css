@@ -1,10 +1,10 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-grey);
 }
 
 * {
@@ -12,23 +12,23 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 :root {
   font-size: 14px;
   /* Colors */
-  --primary: #3e4252;
+  --primary: #232223;
   --primary-dark: #3e4352;
-  --primary-blue: #1891d4;
+  --primary-blue: #eb0029;
   --secondary: #e7e7e7;
   --secondary-grey: #787878;
   --bg-white: #fff;
   --bg-grey: #f8f8f8;
 
   /* font */
-  --family: 'Lato', sans-serif;
+  --family: 'Josefin Sans', sans-serif;
+  --family-secondary: 'Lato', sans-serif;
   --fw-normal: 400;
   --fw-bold: 700;
 
@@ -36,26 +36,41 @@ code {
   --radii-sm: 20px;
 }
 
-
 /* Global */
 
 * {
-  font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  vertical-align: baseline;
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 28px;
   color: var(--primary-blue);
   font-weight: var(--fw-normal);
   font-family: var(--family);
   margin: auto;
 }
 
-p, ul {
+h2 {
+  font-size: 24px;
+  color: var(--primary);
+  font-weight: var(--fw-bold);
+  font-family: var(--family);
+  padding: 20px;
+  margin: auto;
+}
+
+p,
+ul {
   margin: 0;
   padding: 0;
+  font-family: var(--family-secondary);
 }
 
 ul {
@@ -72,7 +87,6 @@ ul {
   left: 35px;
   top: 35px;
 }
-
 
 ::-webkit-scrollbar {
   width: 0;

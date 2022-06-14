@@ -9,37 +9,43 @@ import { getAllRecipes, getLoadingStatus } from '../../store/randomRecipesSlice/
 import { SingleRecipeType } from '../../types/recipe'
 import styles from './homepage.module.scss'
 import { nanoid } from 'nanoid'
+import Loader from '../../components/loader/loader'
+import NotFound from '../../components/notFound/notFound'
 
 function Homepage(): JSX.Element {
   const dispatch = useAppDispatch()
-  const fetchedRecepies = useAppSelector(getAllRecipes)
-  // const fetchedRecepies = recipesMocks.recipes
+  // const fetchedRecepies = useAppSelector(getAllRecipes)
+  const fetchedRecepies = recipesMocks.recipes.slice(0, 4)
   const [recipes, setRecipes] = useState<SingleRecipeType[]>(fetchedRecepies)
-  const loading = useAppSelector(getLoadingStatus)
-  // const loading = false
+  // const loading = useAppSelector(getLoadingStatus)
+  const loading = false
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(fetchRecipesAction())
   }, [dispatch])
 
   useEffect(() => {
     setRecipes(fetchedRecepies)
-  }, [fetchedRecepies])
+  }, [fetchedRecepies]) */
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    console.log('qq')
+  }
 
   return (
     <>
-      <Search setRecipes={setRecipes} recipes={fetchedRecepies} />
-      <div className={styles.rGrid}>
+      <div onScroll={handleScroll}>
+        <Search setRecipes={setRecipes} recipes={fetchedRecepies} />
         {loading ? (
-          'Please wait'
+          <Loader />
         ) : recipes.length === 0 ? (
-          'There are no recipes'
+          <NotFound />
         ) : (
-          <>
+          <div className={styles.rGrid}>
             {recipes.map(recipe => (
               <RecipeItem key={nanoid()} recipe={recipe} />
             ))}
-          </>
+          </div>
         )}
       </div>
     </>

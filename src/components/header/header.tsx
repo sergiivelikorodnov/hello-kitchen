@@ -1,7 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import styles from './header.module.scss'
 
 function Header(): JSX.Element {
-  return <h1>Hello Kitchen</h1>
+  return (
+    <h1 className={styles.hLogo}>
+      <Link to='/'>Hello Kitchen</Link>
+    </h1>
+  )
 }
 
 export default Header

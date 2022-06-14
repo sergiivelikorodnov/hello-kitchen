@@ -1,43 +1,36 @@
-.rItem{
+.sItem{
     display: flex;
     flex-direction: column;
     width: 100%;
     border-radius: 1.5rem;
-    background: #fff;
-    overflow: hidden;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    background-color: var(--bg-white);
 
     img{
         border-radius: 1.5rem 1.5rem 0 0;
     }
 }
 
-.rImage{
+.sImage{
     width: 100%;
 }
 
-.rContent{
-    padding: 2rem;
+.sContent{
+    padding: 20px;
     font-size: 16px;
-
-    p{
-        padding-bottom: 20px;
-    }
 }
 
-.rTitle{
-    font-size: 1.8rem;
-    padding-bottom: 20px;
+.sTitle{
+    font-size: 20px;
+    padding-bottom: 10px;
 
     a{
-        color:var(--primary-blue);
-        font-weight: var(--fw-bold);
         font-family: var(--family);
+        color: var(--primary-blue);
+        font-weight: var(--fw-normal);
     }
 }
 
-.rDetails{
+.sDetails{
     display: flex;
     justify-content: space-between;
     padding-top: 10px;

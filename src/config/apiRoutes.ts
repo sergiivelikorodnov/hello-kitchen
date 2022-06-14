@@ -1,4 +1,5 @@
 export enum APIRoutes {
   Recipes = '/random',
-  Search = '/findByIngredients?ingredients=',
+  SingleRecipe = '/information',
+  SimilarRecipes = '/similar',
 }

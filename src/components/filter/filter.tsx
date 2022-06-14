@@ -9,7 +9,7 @@ import {
   getSortRecipesByPopularity,
   getSortRecipesByPrice,
   getSortRecipesByTimeCooking
-} from '../utils/sort'
+} from '../../utils/sort'
 
 type FiterProps = {
   setRecipes: (arg: SingleRecipeType[]) => void
@@ -23,8 +23,6 @@ function Filter({ setRecipes, recipes }: FiterProps) {
   const [sort, setSort] = useState('Sort')
   const [] = useDebounce(dish, 1000)
   const originalRecipes = recipes
-
-  console.log(recipes)
 
   const getSortedrecipes = (sortType: string, recipes: SingleRecipeType[]): SingleRecipeType[] => {
     switch (sortType) {
@@ -45,16 +43,15 @@ function Filter({ setRecipes, recipes }: FiterProps) {
     _ => {
       const filter: SingleRecipeType[] = recipes
         .filter(recipe =>
-          searchTitle && searchTitle !== '' ? recipe.title.toLowerCase().includes(searchTitle) : recipe
+          searchTitle && searchTitle !== '' ? recipe && recipe.title.toLowerCase().includes(searchTitle) : recipe
         )
-        .filter(recipe => (dish !== 'Select Type' ? recipe.dishTypes.includes(dish.toLocaleLowerCase()) : recipe))
         .filter(recipe =>
-          cuisine !== 'Select Cuisine' ? recipe.cuisines.includes(cuisine.toLocaleLowerCase()) : recipe
+          dish !== 'Select Type' ? recipe && recipe.dishTypes.includes(dish.toLocaleLowerCase()) : recipe
         )
-        .sort((recipeA, recipeB) => recipeB.readyInMinutes - recipeA.readyInMinutes)
-
-      console.log('filter', filter)
-      console.log('recipes', recipes)
+        .filter(recipe =>
+          cuisine !== 'Select Cuisine' ? recipe && recipe.cuisines.includes(cuisine.toLocaleLowerCase()) : recipe
+        )
+      // .sort((recipeA, recipeB) => (recipeB.readyInMinutes - recipeA.readyInMinutes))
 
       getSortedrecipes(sort, filter)
       setRecipes(filter)

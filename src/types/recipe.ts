@@ -115,12 +115,22 @@ export type SingleRecipeType = {
   dishTypes: string[]
   originalId: number | null
   extendedIngredients: ExtendedIngredientType[]
-
   summary: string
 
   winePairing?: WinePairingType
-}
+} | null
 
 export type RecipesType = {
   recipes: SingleRecipeType[]
 }
+
+export type SimilarRecipeType = {
+  id: number
+  title: string
+  imageType: string
+  readyInMinutes: number
+  servings: number
+  sourceUrl: string
+}
+
+export type SimilarRecipesType = SimilarRecipeType[]

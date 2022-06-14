@@ -11,7 +11,7 @@ const randomRecipesSlice = createSlice({
   name: 'recipes',
   initialState,
   reducers: {
-    getRecipes(state, action: PayloadAction<RecipesType>) {
+    setRecipes(state, action: PayloadAction<RecipesType>) {
       state.recipes = action.payload.recipes
       state.loading = false
     },
@@ -22,6 +22,6 @@ const randomRecipesSlice = createSlice({
   }
 })
 
-export const { getRecipes, setLoading } = randomRecipesSlice.actions
+export const { setRecipes, setLoading } = randomRecipesSlice.actions
 
 export default randomRecipesSlice.reducer

@@ -15,7 +15,8 @@
     background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
     background-size: 5px 5px, 5px 5px, 1px 27px;
     background-repeat: no-repeat;
-    width: 160px;
+    width: 170px;
+    font-family: var(--family);
 }
 
 .dSelect:focus {
