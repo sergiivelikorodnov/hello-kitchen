@@ -8,6 +8,7 @@ import { truncateString } from '../../utils/utils'
 import ClockCircleOutlined from '@ant-design/icons/lib/icons/ClockCircleOutlined'
 import StarFilled from '@ant-design/icons/lib/icons/StarFilled'
 import { StarOutlined } from '@ant-design/icons'
+import RecipeTimeСomplexity from '../recipeTimeСomplexity/recipeTimeСomplexity'
 
 type RecipeItemProps = {
   recipe: SingleRecipeType
@@ -29,16 +30,7 @@ function RecipeItem({ recipe }: RecipeItemProps): JSX.Element {
           </div>
           <p>{parse(truncateString(summary, 250))}</p>
           <hr />
-          <div className={styles.rDetails}>
-            <div className={styles.sTime}>
-              <ClockCircleOutlined /> {readyInMinutes}
-            </div>
-            <div className={styles.sServings}>
-              {servings}
-              <StarFilled />
-              <StarOutlined />
-            </div>
-          </div>
+          <RecipeTimeСomplexity readyInMinutes={readyInMinutes} servings={servings} />
         </div>
       </article>
     )

@@ -14,9 +14,10 @@ import {
 type FiterProps = {
   setRecipes: (arg: SingleRecipeType[]) => void
   recipes: SingleRecipeType[]
+  setIsFetching: (arg0: boolean) => void
 }
 
-function Filter({ setRecipes, recipes }: FiterProps) {
+function Filter({ setRecipes, recipes, setIsFetching }: FiterProps) {
   const [searchTitle, setSearchTitle] = useState('')
   const [cuisine, setCuisine] = useState('Select Cuisine')
   const [dish, setDish] = useState('Select Type')
@@ -51,8 +52,8 @@ function Filter({ setRecipes, recipes }: FiterProps) {
         .filter(recipe =>
           cuisine !== 'Select Cuisine' ? recipe && recipe.cuisines.includes(cuisine.toLocaleLowerCase()) : recipe
         )
-      // .sort((recipeA, recipeB) => (recipeB.readyInMinutes - recipeA.readyInMinutes))
 
+      setIsFetching(false)
       getSortedrecipes(sort, filter)
       setRecipes(filter)
     },

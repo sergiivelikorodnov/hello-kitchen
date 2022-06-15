@@ -13,7 +13,7 @@ export const fetchRecipesAction =
   async (dispatch, _getState, api): Promise<void> => {
     dispatch(setLoading());
     await api
-      .get<RecipesType>(`${APIRoutes.Recipes}?number=12&apiKey=${AUTH_TOKEN_KEY}`)
+      .get<RecipesType>(`${APIRoutes.Recipes}?number=8&apiKey=${AUTH_TOKEN_KEY}`)
       .then(({ data }) => {
         dispatch(setRecipes(data));
       })

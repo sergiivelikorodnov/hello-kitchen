@@ -11,8 +11,11 @@ const randomRecipesSlice = createSlice({
   name: 'recipes',
   initialState,
   reducers: {
+    clearRecipesArray(state) {
+      state.recipes = [];
+    },
     setRecipes(state, action: PayloadAction<RecipesType>) {
-      state.recipes = action.payload.recipes
+      state.recipes = state.recipes.concat(action.payload.recipes)
       state.loading = false
     },
     setLoading(state) {
@@ -22,6 +25,6 @@ const randomRecipesSlice = createSlice({
   }
 })
 
-export const { setRecipes, setLoading } = randomRecipesSlice.actions
+export const { setRecipes, setLoading, clearRecipesArray } = randomRecipesSlice.actions
 
 export default randomRecipesSlice.reducer
