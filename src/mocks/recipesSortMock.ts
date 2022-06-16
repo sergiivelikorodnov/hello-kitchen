@@ -1140,37 +1140,12 @@ const forthRecipe = {
   spoonacularSourceUrl: 'https://spoonacular.com/black-bean-brownies-635063'
 }
 
-export const fakeSortRecipes = [
-    firstRecipe,
-    secondRecipe,
-    thirdRecipe,
-    forthRecipe
-]
+export const fakeSortRecipes = [firstRecipe, secondRecipe, thirdRecipe, forthRecipe]
 
-export const fakeSortedPopularity = [
-    firstRecipe,
-    thirdRecipe,
-    secondRecipe,
-    forthRecipe
-]
+export const fakeSortedPopularity = [firstRecipe, thirdRecipe, secondRecipe, forthRecipe]
 
-export const fakeSortedPrice = [
-    forthRecipe,
-    firstRecipe,
-    secondRecipe,
-    thirdRecipe
-]
+export const fakeSortedPrice = [forthRecipe, firstRecipe, secondRecipe, thirdRecipe]
 
-export const fakeSortedTimeCooking = [
-    forthRecipe,
-    thirdRecipe,
-    secondRecipe,
-    firstRecipe
-]
+export const fakeSortedTimeCooking = [forthRecipe, thirdRecipe, secondRecipe, firstRecipe]
 
-export const fakeSortedHealthScore = [
-    secondRecipe,
-    forthRecipe,
-    thirdRecipe,
-    firstRecipe
-]
+export const fakeSortedHealthScore = [secondRecipe, forthRecipe, thirdRecipe, firstRecipe]

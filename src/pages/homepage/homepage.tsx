@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchRecipesAction } from '../../store/apiActions'
 import { getAllRecipes, getLoadingStatus } from '../../store/randomRecipesSlice/selectors'
 import { RecipesType, SingleRecipeType } from '../../types/recipe'
-import styles from './homepage.module.scss'
 import Loader from '../../components/loader/loader'
 import NotFound from '../../components/notFound/notFound'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
@@ -13,6 +12,7 @@ import axios from 'axios'
 import { APIRoutes } from '../../config/apiRoutes'
 import { API_BASE_URL, AUTH_TOKEN_KEY } from '../../const'
 import { clearRecipesArray, setRecipes } from '../../store/randomRecipesSlice/randomRecipesSlice'
+import styles from './homepage.module.scss'
 
 function Homepage(): JSX.Element {
   const dispatch = useAppDispatch()
@@ -34,8 +34,10 @@ function Homepage(): JSX.Element {
   }, [getFetchedRecipes])
 
   useEffect(() => {
-    if (isFetching) {
-      moreData()
+    return () => {
+      if (isFetching) {
+        moreData()
+      }
     }
   }, [isFetching])
 

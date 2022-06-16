@@ -1,4 +1,4 @@
 export enum AppRoute {
   Root = '/',
-  RecipeId = '/recipe/:id',
+  RecipeId = '/recipe/:id'
 }

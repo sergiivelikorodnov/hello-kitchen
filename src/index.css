@@ -35,7 +35,10 @@ code {
 
   --radii: 1rem;
   --radii-sm: 20px;
+
+  --radii-sm: 20px;
 }
+
 
 /* Global */
 

@@ -12,7 +12,7 @@ const randomRecipesSlice = createSlice({
   initialState,
   reducers: {
     clearRecipesArray(state) {
-      state.recipes = [];
+      state.recipes = []
     },
     setRecipes(state, action: PayloadAction<RecipesType>) {
       state.recipes = state.recipes.concat(action.payload.recipes)
@@ -21,7 +21,6 @@ const randomRecipesSlice = createSlice({
     setLoading(state) {
       state.loading = true
     }
-
   }
 })
 

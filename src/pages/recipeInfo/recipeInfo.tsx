@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import SimilarRecipe from '../../components/similarRecipe/similarRecipe'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
-import { recipesMocks } from '../../mocks/recipesMock'
 import { fetchRecipeInfoAction, fetchSimilarRecipesAction } from '../../store/apiActions'
 import {
   getSimilarRecipes,
@@ -12,23 +11,22 @@ import {
   getSingleRecipeInfo
 } from '../../store/singleRecipeSlice/selectors'
 import parse from 'html-react-parser'
-import styles from './recipeInfo.module.scss'
 import Loader from '../../components/loader/loader'
+import styles from './recipeInfo.module.scss'
 
 function RecipeInfo(): JSX.Element {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const fetchedRecipeInfo = useAppSelector(getSingleRecipeInfo)
-  // const fetchedRecipeInfo = recipesMocks.recipes[0]
   const fetchedSimilarRecipes = useAppSelector(getSimilarRecipes)
-  // const fetchedSimilarRecipes = recipesMocks.recipes
   const loading = useAppSelector(getSimilarRecipesLoadingStatus)
-  // const loading = false
 
   useEffect(() => {
-    id && dispatch(fetchRecipeInfoAction(id))
-    id && dispatch(fetchSimilarRecipesAction(id))
+    return () => {
+      id && dispatch(fetchRecipeInfoAction(id))
+      id && dispatch(fetchSimilarRecipesAction(id))
+    }
   }, [dispatch, id])
 
   return (

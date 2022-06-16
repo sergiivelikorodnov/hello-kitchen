@@ -13,7 +13,6 @@ import { Router } from 'react-router-dom'
 import { RootState } from '../../store'
 import { fakeStateLoading, fakeStateRecipes } from '../../mocks/mockStore'
 import '@testing-library/jest-dom/extend-expect'
-import userEvent from '@testing-library/user-event'
 
 const history = createMemoryHistory()
 

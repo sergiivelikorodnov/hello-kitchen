@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RecipesType, SimilarRecipesType, SingleRecipeType } from '../../types/recipe'
+import { SimilarRecipesType, SingleRecipeType } from '../../types/recipe'
 import { SingleRecipeStateType } from '../../types/state'
 
 const initialState: SingleRecipeStateType = {
@@ -22,7 +22,6 @@ const singleRecipeSlice = createSlice({
     setSingleRecipeLoading(state) {
       state.loading = true
     }
-
   }
 })
 

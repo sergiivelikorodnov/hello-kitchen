@@ -1,12 +1,9 @@
 import { SimilarRecipeType } from '../../types/recipe'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from './similarRecipe.module.scss'
 import { API_IMAGE_URL, ImageSize } from '../../const'
-import ClockCircleOutlined from '@ant-design/icons/lib/icons/ClockCircleOutlined'
-import StarOutlined from '@ant-design/icons/lib/icons/StarOutlined'
-import StarFilled from '@ant-design/icons/lib/icons/StarFilled'
 import RecipeTimeСomplexity from '../recipeTimeСomplexity/recipeTimeСomplexity'
+import styles from './similarRecipe.module.scss'
 
 type RecipeItemProps = {
   recipe: SimilarRecipeType

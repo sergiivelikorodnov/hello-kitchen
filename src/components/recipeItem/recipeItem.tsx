@@ -1,10 +1,10 @@
 import React from 'react'
 import parse from 'html-react-parser'
 import { SingleRecipeType } from '../../types/recipe'
-import styles from './recipeItem.module.scss'
 import { Link } from 'react-router-dom'
 import { truncateString } from '../../utils/utils'
 import RecipeTimeСomplexity from '../recipeTimeСomplexity/recipeTimeСomplexity'
+import styles from './recipeItem.module.scss'
 
 type RecipeItemProps = {
   recipe: SingleRecipeType

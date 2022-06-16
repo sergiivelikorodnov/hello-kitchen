@@ -6,7 +6,6 @@ import { Router } from 'react-router'
 import { Provider } from 'react-redux'
 import { configureMockStore } from '@jedmao/redux-mock-store'
 import { AppRoute } from '../../config/routes'
-import { dishesList } from '../../const'
 import Filter from './filter'
 import { recipesMocks } from '../../mocks/recipesMock'
 

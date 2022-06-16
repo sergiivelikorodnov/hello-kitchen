@@ -1,4 +1,4 @@
-import { RecipesType, SimilarRecipesType, SingleRecipeType } from '../types/recipe'
+import { SimilarRecipesType, SingleRecipeType } from '../types/recipe'
 import { recipesMocks } from './recipesMock'
 import { similarRecipesMock } from './similarRecipesMock'
 
@@ -14,27 +14,26 @@ export type fakeStateType = {
   }
 }
 
-
 export const fakeStateRecipes: fakeStateType = {
   RANDOM_RECIPES: {
     recipes: recipesMocks.recipes,
-    loading: false,
+    loading: false
   },
   RECIPE_INFO: {
     recipe: recipesMocks.recipes[0],
     similarRecipes: similarRecipesMock,
-    loading: false,
+    loading: false
   }
-};
+}
 
 export const fakeStateLoading: fakeStateType = {
   RANDOM_RECIPES: {
     recipes: recipesMocks.recipes,
-    loading: true,
+    loading: true
   },
   RECIPE_INFO: {
     recipe: recipesMocks.recipes[0],
     similarRecipes: similarRecipesMock,
-    loading: false,
+    loading: false
   }
-};
+}

@@ -1,4 +1,4 @@
-.rContainer{
+.rContainer {
   max-width: 1400px;
   margin: auto;
 }
@@ -10,6 +10,20 @@
   padding: 20px;
   max-width: 1440px;
   margin: auto;
+
+  @media (max-width: 1200px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 540px) {
+    grid-template-columns: 1fr;
+  }
+
+
 }
 
 .rContent {
@@ -18,12 +32,28 @@
   width: 100%;
   margin: auto;
   padding: 50px 0;
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+  }
 }
 
 .rImage {
   width: 556px;
   height: fit-content;
   border-radius: 2rem;
+
+  @media (max-width: 980px) {
+    width: 100%;
+    margin: 20px;
+  }
+
+  @media (max-width: 780px) {
+    width: 90%;
+    margin: auto;
+  }
+
+
 }
 
 .rTitle {
@@ -45,12 +75,12 @@
   font-size: 1.25rem;
   line-height: 2rem;
 
-  a{
+  a {
     color: var(--primary-blue);
   }
 }
 
-.rBack{
+.rBack {
   color: var(--primary-blue);
   font-size: 2rem;
   padding-bottom: 20px;

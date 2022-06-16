@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { cuisineList, dishesList, SortingType, sortList } from '../../const'
 import Dropdowns from '../dropdowns/dropdowns'
-import styles from './filter.module.scss'
 import { SingleRecipeType } from '../../types/recipe'
 import { useDebounce, useDebouncedCallback } from 'use-debounce'
 import {
@@ -10,6 +9,7 @@ import {
   getSortRecipesByPrice,
   getSortRecipesByTimeCooking
 } from '../../utils/sort'
+import styles from './filter.module.scss'
 
 type FiterProps = {
   setRecipes: (arg: SingleRecipeType[]) => void
@@ -57,7 +57,6 @@ function Filter({ setRecipes, recipes, setIsFetching }: FiterProps) {
       setIsFetching(false)
       getSortedrecipes(sort, filter)
       setRecipes(filter)
-      console.log(filter)
     },
     100,
     { maxWait: 2000 }
