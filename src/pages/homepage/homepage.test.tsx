@@ -21,7 +21,7 @@ const middlewares = [thunk.withExtraArgument(api)]
 const mockStore = configureMockStore<RootState, Action, ThunkDispatch<RootState, typeof api, Action>>(middlewares)
 
 describe('Home Page render', () => {
-  it('should render filter and 24 cards', () => {
+  it('should render filter and 12 cards', () => {
     const store = mockStore(fakeStateRecipes)
 
     render(

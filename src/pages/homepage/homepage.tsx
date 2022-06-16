@@ -17,18 +17,20 @@ import { clearRecipesArray, setRecipes } from '../../store/randomRecipesSlice/ra
 function Homepage(): JSX.Element {
   const dispatch = useAppDispatch()
   const getFetchedRecipes = useAppSelector(getAllRecipes)
+  const loading = useAppSelector(getLoadingStatus)
   const [fetchedRecipes, setFetchedRecipes] = useState<SingleRecipeType[]>([])
 
-  const loading = useAppSelector(getLoadingStatus)
   const [isFetching, setIsFetching] = useInfiniteScroll(moreData)
 
   useEffect(() => {
-    dispatch(clearRecipesArray())
-    dispatch(fetchRecipesAction())
+    return () => {
+      dispatch(clearRecipesArray())
+      dispatch(fetchRecipesAction())
+    }
   }, [dispatch])
 
   useEffect(() => {
-    setFetchedRecipes(getFetchedRecipes)
+    setFetchedRecipes([...new Set([...getFetchedRecipes])])
   }, [getFetchedRecipes])
 
   useEffect(() => {
@@ -40,7 +42,7 @@ function Homepage(): JSX.Element {
   function moreData() {
     axios.get<RecipesType>(`${API_BASE_URL}${APIRoutes.Recipes}?number=4&apiKey=${AUTH_TOKEN_KEY}`).then(({ data }) => {
       dispatch(setRecipes(data))
-      setFetchedRecipes([...new Set([...fetchedRecipes, ...data.recipes])])
+      setFetchedRecipes(fetchedRecipes && [...new Set([...fetchedRecipes, ...data.recipes])])
       setIsFetching(false)
     })
   }
@@ -51,11 +53,11 @@ function Homepage(): JSX.Element {
         <Filter setRecipes={setFetchedRecipes} recipes={getFetchedRecipes} setIsFetching={setIsFetching} />
         {loading ? (
           <Loader />
-        ) : fetchedRecipes.length === 0 ? (
+        ) : fetchedRecipes && fetchedRecipes.length === 0 ? (
           <NotFound />
         ) : (
           <div className={styles.rGrid}>
-            {fetchedRecipes.map(recipe => recipe && <RecipeItem key={recipe.id} recipe={recipe} />)}
+            {fetchedRecipes && fetchedRecipes.map(recipe => recipe && <RecipeItem key={recipe.id} recipe={recipe} />)}
           </div>
         )}
       </div>

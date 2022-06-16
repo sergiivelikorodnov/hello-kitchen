@@ -33,9 +33,9 @@ describe('Render Home page', () => {
     </Provider>
   )
 
-  it('should render "24 cards" correctly', () => {
+  it('should render "12 cards" correctly', () => {
     render(fakeApp)
-    expect(screen.getAllByTestId('recipeCard')).toHaveLength(24)
+    expect(screen.getAllByTestId('recipeCard')).toHaveLength(12)
   })
 
   it('should render Logo', () => {
@@ -64,15 +64,12 @@ describe('Home page Loading', () => {
 describe('Check routing', () => {
   const store = mockStore(fakeStateRecipes)
 
-  const fakeApp = (
+  render(
     <Provider store={store}>
-      <Router navigator={history} location={history.location}>
+      <Router navigator={history} location={'/recipe/6502139'}>
         <App />
       </Router>
     </Provider>
   )
-
-  history.push('/recipe/6502139')
-  render(fakeApp)
   expect(screen.getByText(/The first recipe/i)).toBeInTheDocument()
 })
