@@ -1,7 +1,6 @@
 import React from 'react'
 import StarFilled from '@ant-design/icons/lib/icons/StarFilled'
 import StarOutlined from '@ant-design/icons/lib/icons/StarOutlined'
-import { nanoid } from 'nanoid'
 
 type StarsProps = {
   rating: number
@@ -13,8 +12,8 @@ function Stars({ rating }: StarsProps): JSX.Element {
 
   return (
     <div>
-      {positive && positive.map(star => <StarFilled key={nanoid()} />)}
-      {negative && negative.map(star => <StarOutlined key={nanoid()} />)}
+      {positive && positive.map((star, index) => <StarFilled data-testid='starFilled' key={index} />)}
+      {negative && negative.map((star, index) => <StarOutlined data-testid='starOutlined' key={index} />)}
     </div>
   )
 }

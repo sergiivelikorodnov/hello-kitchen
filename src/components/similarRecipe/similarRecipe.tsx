@@ -25,7 +25,7 @@ function SimilarRecipe({ recipe }: RecipeItemProps): JSX.Element {
             <Link to={`/recipe/${id}`}>{title}</Link>
           </div>
           <hr />
-          <RecipeTimeСomplexity readyInMinutes={readyInMinutes} servings={servings} />
+          <RecipeTimeСomplexity readyInMinutes={readyInMinutes} />
         </div>
       </article>
     )

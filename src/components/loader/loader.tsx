@@ -11,7 +11,7 @@ function Loader(): JSX.Element {
 
   return (
     <>
-      <div style={lStyle}>
+      <div style={lStyle} data-testid='loading'>
         <TailSpin height='50' width='50' color='grey' ariaLabel='loading' />
       </div>
     </>

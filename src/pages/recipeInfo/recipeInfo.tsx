@@ -1,5 +1,4 @@
 import LeftOutlined from '@ant-design/icons/lib/icons/LeftOutlined'
-import { nanoid } from 'nanoid'
 import React from 'react'
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -20,12 +19,12 @@ function RecipeInfo(): JSX.Element {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  // const fetchedRecipeInfo = useAppSelector(getSingleRecipeInfo)
-  const fetchedRecipeInfo = recipesMocks.recipes[0]
-  // const fetchedSimilarRecipes = useAppSelector(getSimilarRecipes)
-  const fetchedSimilarRecipes = recipesMocks.recipes
-  // const loading = useAppSelector(getSimilarRecipesLoadingStatus)
-  const loading = false
+  const fetchedRecipeInfo = useAppSelector(getSingleRecipeInfo)
+  // const fetchedRecipeInfo = recipesMocks.recipes[0]
+  const fetchedSimilarRecipes = useAppSelector(getSimilarRecipes)
+  // const fetchedSimilarRecipes = recipesMocks.recipes
+  const loading = useAppSelector(getSimilarRecipesLoadingStatus)
+  // const loading = false
 
   useEffect(() => {
     id && dispatch(fetchRecipeInfoAction(id))
@@ -40,7 +39,7 @@ function RecipeInfo(): JSX.Element {
         <div className={styles.rContainer}>
           <div className={styles.rContent}>
             <div className={styles.rPost}>
-              <LeftOutlined onClick={() => navigate(-1)} className={styles.rBack} />
+              <LeftOutlined onClick={() => navigate(-1)} className={styles.rBack} data-testid='recipeInfo' />
               <h1 className={styles.rTitle}>{fetchedRecipeInfo && fetchedRecipeInfo.title}</h1>
               <p className={styles.rDescription}>
                 {fetchedRecipeInfo && fetchedRecipeInfo.summary !== null ? parse(fetchedRecipeInfo.summary) : ''}
@@ -52,10 +51,10 @@ function RecipeInfo(): JSX.Element {
               className={styles.rImage}
             />
           </div>
-          <h2>Similar Recipes</h2>
+          <h2 data-testid='similarRecipes'>Similar Recipes</h2>
           <div className={styles.sContainer}>
             {fetchedSimilarRecipes.length > 0 &&
-              fetchedSimilarRecipes.map(recipe => recipe && <SimilarRecipe key={nanoid()} recipe={recipe} />)}
+              fetchedSimilarRecipes.map(recipe => recipe && <SimilarRecipe key={recipe.id} recipe={recipe} />)}
           </div>
         </div>
       )}

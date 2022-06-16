@@ -43,6 +43,7 @@ function Filter({ setRecipes, recipes, setIsFetching }: FiterProps) {
   const debounced = useDebouncedCallback(
     _ => {
       const filter: SingleRecipeType[] = recipes
+        .slice()
         .filter(recipe =>
           searchTitle && searchTitle !== '' ? recipe && recipe.title.toLowerCase().includes(searchTitle) : recipe
         )
@@ -56,6 +57,7 @@ function Filter({ setRecipes, recipes, setIsFetching }: FiterProps) {
       setIsFetching(false)
       getSortedrecipes(sort, filter)
       setRecipes(filter)
+      console.log(filter)
     },
     100,
     { maxWait: 2000 }

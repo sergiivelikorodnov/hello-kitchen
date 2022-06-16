@@ -9,9 +9,9 @@ export const truncateString = (str:string, num:number)=> {
 	const hours = Math.floor(totalMinutes / 60);
 	const minutes = totalMinutes % 60;
 	if (hours===0){
-		return `${minutes} min`;
+		return `${minutes}min`;
 	}else{
-		return `${hours}h ${minutes} min`;
+		return `${hours}h ${minutes}min`;
 	}
   };
 

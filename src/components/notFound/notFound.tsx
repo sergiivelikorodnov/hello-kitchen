@@ -2,7 +2,7 @@ import { FrownOutlined } from '@ant-design/icons'
 import React from 'react'
 import styles from './notFound.module.scss'
 
-function notFound() {
+function NotFound() {
   return (
     <div className={styles.rTitle}>
       <FrownOutlined /> Sorry. There are not found
@@ -10,4 +10,4 @@ function notFound() {
   )
 }
 
-export default notFound
+export default NotFound
