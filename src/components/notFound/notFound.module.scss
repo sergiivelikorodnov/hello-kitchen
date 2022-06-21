@@ -1,7 +1,9 @@
+@use '../../consts/variables.scss' as *;
+
 .rTitle {
   font-size: 2rem;
-  color: var(--primary-blue);
-  font-family: var(--family);
+  color: $primary-blue;
+  font-family: $family;
   height: 150px;
   display: flex;
   gap: 20px;

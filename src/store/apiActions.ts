@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 
 import { setRecipes, setLoading } from './randomRecipesSlice/randomRecipesSlice'
 import { RecipesType, SimilarRecipesType, SingleRecipeType } from '../types/recipe'
-import { AUTH_TOKEN_KEY, NotificationMessage, toastPosition } from '../const'
+import { AUTH_TOKEN_KEY, NotificationMessage, toastPosition } from '../consts/const'
 import { setRecipeInfo, setSimilarRecipes, setSingleRecipeLoading } from './singleRecipeSlice/singleRecipeSlice'
 
 export const fetchRecipesAction =

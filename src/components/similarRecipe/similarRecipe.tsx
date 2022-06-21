@@ -1,7 +1,7 @@
 import { SimilarRecipeType } from '../../types/recipe'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { API_IMAGE_URL, ImageSize } from '../../const'
+import { API_IMAGE_URL, ImageSize } from '../../consts/const'
 import RecipeTimeСomplexity from '../recipeTimeСomplexity/recipeTimeСomplexity'
 import styles from './similarRecipe.module.scss'
 

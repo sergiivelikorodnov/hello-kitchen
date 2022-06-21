@@ -1,3 +1,5 @@
+@use '../../consts/variables.scss' as *;
+
 .rItem {
   display: flex;
   flex-direction: column;
@@ -31,8 +33,8 @@
   padding-bottom: 20px;
 
   a {
-    color: var(--primary-blue);
-    font-weight: var(--fw-bold);
-    font-family: var(--family);
+    color: $primary-blue;
+    font-weight: $fw-bold;
+    font-family: $family;
   }
 }

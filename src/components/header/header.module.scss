@@ -1,12 +1,14 @@
+@use '../../consts/variables.scss' as *;
+
 .hLogo {
   display: flex;
   justify-content: center;
   padding: 20px;
   a {
-    font-family: var(--family);
+    font-family: $family;
     text-decoration: none;
-    color: var(--primary-blue);
+    color: $primary-blue;
     font-size: 3rem;
-    font-weight: var(--fw-bold);
+    font-weight: $fw-bold;
   }
 }

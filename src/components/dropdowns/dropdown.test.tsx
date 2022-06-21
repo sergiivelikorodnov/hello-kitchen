@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import { configureMockStore } from '@jedmao/redux-mock-store'
 import { AppRoute } from '../../config/routes'
 import Dropdowns from './dropdowns'
-import { dishesList } from '../../const'
+import { dishesList } from '../../consts/const'
 
 const history = createMemoryHistory()
 const mockStore = configureMockStore()

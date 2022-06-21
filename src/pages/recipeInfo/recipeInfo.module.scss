@@ -1,3 +1,5 @@
+@use '../../consts/variables.scss' as *;
+
 .rContainer {
   max-width: 1400px;
   margin: auto;
@@ -57,11 +59,11 @@
 }
 
 .rTitle {
-  color: var(--primary-blue);
-  font-family: var(--family);
+  color: $primary-blue;
+  font-family: $family;
   font-size: 2rem;
   padding-bottom: 20px;
-  font-weight: var(--fw-bold);
+  font-weight: $fw-bold;
 }
 
 .rPost {
@@ -70,19 +72,19 @@
 }
 
 .rDescription {
-  color: var(--primary-dark);
-  font-family: var(--family-secondary);
+  color: $primary-dark;
+  font-family: $family-secondary;
   font-size: 1.25rem;
   line-height: 2rem;
 
   a {
-    color: var(--primary-blue);
+    color: $primary-blue;
   }
 }
 
 .rBack {
-  color: var(--primary-blue);
+  color: $primary-blue;
   font-size: 2rem;
   padding-bottom: 20px;
-  font-weight: var(--fw-bold);
+  font-weight: $fw-bold;
 }

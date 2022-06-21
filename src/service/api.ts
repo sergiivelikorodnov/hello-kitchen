@@ -1,4 +1,4 @@
-import { API_BASE_URL, REQUEST_TIMEOUT } from '../const'
+import { API_BASE_URL, REQUEST_TIMEOUT } from '../consts/const'
 import axios, { AxiosInstance } from 'axios'
 
 export const createAPI = (): AxiosInstance => {

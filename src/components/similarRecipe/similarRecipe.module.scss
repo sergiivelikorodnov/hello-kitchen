@@ -1,9 +1,11 @@
+@use '../../consts/variables.scss' as *;
+
 .sItem {
   display: flex;
   flex-direction: column;
   width: 100%;
   border-radius: 1.5rem;
-  background-color: var(--bg-white);
+  background-color: $bg-white;
 
   img {
     border-radius: 1.5rem 1.5rem 0 0;
@@ -24,8 +26,8 @@
   padding-bottom: 10px;
 
   a {
-    font-family: var(--family);
-    color: var(--primary-blue);
-    font-weight: var(--fw-normal);
+    font-family: $family;
+    color: $primary-blue;
+    font-weight: $fw-normal;
   }
 }

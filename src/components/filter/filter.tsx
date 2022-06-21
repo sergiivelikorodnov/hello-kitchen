@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { cuisineList, dishesList, SortingType, sortList } from '../../const'
+import { cuisineList, dishesList, SortingType, sortList } from '../../consts/const'
 import Dropdowns from '../dropdowns/dropdowns'
 import { SingleRecipeType } from '../../types/recipe'
 import { useDebounce, useDebouncedCallback } from 'use-debounce'

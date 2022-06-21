@@ -10,7 +10,7 @@ import NotFound from '../../components/notFound/notFound'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 import axios from 'axios'
 import { APIRoutes } from '../../config/apiRoutes'
-import { API_BASE_URL, AUTH_TOKEN_KEY } from '../../const'
+import { API_BASE_URL, AUTH_TOKEN_KEY } from '../../consts/const'
 import { clearRecipesArray, setRecipes } from '../../store/randomRecipesSlice/randomRecipesSlice'
 import styles from './homepage.module.scss'
 

@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import App from './components/app/App'
 import store from './store'
-import './index.css'
+import './consts/global.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
