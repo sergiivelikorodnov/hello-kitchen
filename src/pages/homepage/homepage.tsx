@@ -54,20 +54,18 @@ function Homepage(): JSX.Element {
   }
 
   return (
-    <>
-      <div>
-        <Filter setRecipes={setFetchedRecipes} recipes={getFetchedRecipes} setIsFetching={setIsFetching} />
-        {loading ? (
-          <Loader />
-        ) : fetchedRecipes && fetchedRecipes.length === 0 ? (
-          <NotFound />
-        ) : (
-          <div className={styles.rGrid}>
-            {fetchedRecipes && fetchedRecipes.map(recipe => recipe && <RecipeItem key={recipe.id} recipe={recipe} />)}
-          </div>
-        )}
-      </div>
-    </>
+    <div>
+      <Filter setRecipes={setFetchedRecipes} recipes={getFetchedRecipes} setIsFetching={setIsFetching} />
+      {loading ? (
+        <Loader />
+      ) : fetchedRecipes && fetchedRecipes.length === 0 ? (
+        <NotFound />
+      ) : (
+        <div className={styles.rGrid}>
+          {fetchedRecipes && fetchedRecipes.map(recipe => recipe && <RecipeItem key={recipe.id} recipe={recipe} />)}
+        </div>
+      )}
+    </div>
   )
 }
 
