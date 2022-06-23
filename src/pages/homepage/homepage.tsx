@@ -13,6 +13,7 @@ import { APIRoutes } from '../../config/apiRoutes'
 import { API_BASE_URL } from '../../consts/const'
 import { clearRecipesArray, setRecipes } from '../../store/randomRecipesSlice/randomRecipesSlice'
 import styles from './homepage.module.scss'
+const _ = require('lodash')
 
 function Homepage(): JSX.Element {
   const dispatch = useAppDispatch()
@@ -30,7 +31,7 @@ function Homepage(): JSX.Element {
   }, [dispatch])
 
   useEffect(() => {
-    setFetchedRecipes([...new Set([...getFetchedRecipes])])
+    setFetchedRecipes(_.uniqBy(getFetchedRecipes, 'id'))
   }, [getFetchedRecipes])
 
   useEffect(() => {
@@ -42,11 +43,14 @@ function Homepage(): JSX.Element {
   }, [isFetching])
 
   function moreData() {
-    axios.get<RecipesType>(`${API_BASE_URL}${APIRoutes.Recipes}?number=4&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`).then(({ data }) => {
-      dispatch(setRecipes(data))
-      setFetchedRecipes(fetchedRecipes && [...new Set([...fetchedRecipes, ...data.recipes])])
-      setIsFetching(false)
-    })
+    axios
+      .get<RecipesType>(`${API_BASE_URL}${APIRoutes.Recipes}?number=4&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
+      .then(({ data }) => {
+        dispatch(setRecipes(data))
+
+        setFetchedRecipes(fetchedRecipes && _.uniqBy([...fetchedRecipes, ...data.recipes], 'id'))
+        setIsFetching(false)
+      })
   }
 
   return (
