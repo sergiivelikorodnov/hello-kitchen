@@ -1,9 +1,7 @@
 import { toast } from 'react-toastify'
-
 export const API_BASE_URL = 'https://api.spoonacular.com/recipes'
 export const API_IMAGE_URL = 'https://spoonacular.com/recipeImages/'
 export const REQUEST_TIMEOUT = 5000
-export const AUTH_TOKEN_KEY = '7f107c39bb3047478e25aead7546eadb'
 
 export enum NotificationMessage {
   Error = 'Sorry. Something went wrong'

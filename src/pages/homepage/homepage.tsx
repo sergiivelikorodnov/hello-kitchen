@@ -10,7 +10,7 @@ import NotFound from '../../components/notFound/notFound'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 import axios from 'axios'
 import { APIRoutes } from '../../config/apiRoutes'
-import { API_BASE_URL, AUTH_TOKEN_KEY } from '../../consts/const'
+import { API_BASE_URL } from '../../consts/const'
 import { clearRecipesArray, setRecipes } from '../../store/randomRecipesSlice/randomRecipesSlice'
 import styles from './homepage.module.scss'
 
@@ -42,7 +42,7 @@ function Homepage(): JSX.Element {
   }, [isFetching])
 
   function moreData() {
-    axios.get<RecipesType>(`${API_BASE_URL}${APIRoutes.Recipes}?number=4&apiKey=${AUTH_TOKEN_KEY}`).then(({ data }) => {
+    axios.get<RecipesType>(`${API_BASE_URL}${APIRoutes.Recipes}?number=4&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`).then(({ data }) => {
       dispatch(setRecipes(data))
       setFetchedRecipes(fetchedRecipes && [...new Set([...fetchedRecipes, ...data.recipes])])
       setIsFetching(false)
