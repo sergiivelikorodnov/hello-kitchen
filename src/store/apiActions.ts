@@ -42,3 +42,16 @@ export const fetchSimilarRecipesAction =
       })
       .catch(() => toast.error(NotificationMessage.Error, toastPosition))
   }
+
+
+export const fetchComplexSearchAction =
+  (query: string): ThunkActionResult =>
+  async (dispatch, _getState, api): Promise<void> => {
+    dispatch(setLoading())
+    await api
+      .get<RecipesType>(`${APIRoutes.ComplexSearch}${query}&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
+      .then(({ data }) => {
+        dispatch(setRecipes(data))
+      })
+      .catch(() => toast.error(NotificationMessage.Error, toastPosition))
+  }

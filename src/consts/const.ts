@@ -17,24 +17,60 @@ export const dishesList = [
     name: 'Select Type'
   },
   {
-    value: 'snack',
-    name: 'Snack'
-  },
-  {
-    value: 'lunch',
-    name: 'Lunch'
-  },
-  {
     value: 'main course',
     name: 'Main Course'
   },
   {
-    value: 'main dish',
-    name: 'Main Dish'
+    value: 'side dish',
+    name: 'Side Dish'
   },
   {
-    value: 'dinner',
-    name: 'Dinner'
+    value: 'dessert',
+    name: 'Dessert'
+  },
+  {
+    value: 'appetizer',
+    name: 'Appetizer'
+  },
+  {
+    value: 'salad',
+    name: 'Salad'
+  },
+  {
+    value: 'bread',
+    name: 'Bread'
+  },
+  {
+    value: 'breakfast',
+    name: 'Breakfast'
+  },
+  {
+    value: 'soup',
+    name: 'Soup'
+  },
+  {
+    value: 'beverage',
+    name: 'Beverage'
+  },
+  {
+    value: 'sauce',
+    name: 'Sauce'
+  },
+  {
+    value: 'marinade',
+    name: 'Marinade'
+  },
+  {
+    value: 'fingerfood',
+    name: 'Fingerfood'
+  },
+  {
+    value: 'snack',
+    name: 'Snack'
+  },
+  {
+    value: 'drink',
+    name: 'Drink'
   }
 ]
 
@@ -84,8 +120,32 @@ export const cuisineList = [
     name: 'Select Cuisine'
   },
   {
+    value: 'African',
+    name: 'African'
+  },
+  {
     value: 'American',
     name: 'American'
+  },
+  {
+    value: 'British',
+    name: 'British'
+  },
+  {
+    value: 'Cajun',
+    name: 'Cajun'
+  },
+  {
+    value: 'Caribbean',
+    name: 'Caribbean'
+  },
+  {
+    value: 'Chinese',
+    name: 'Chinese'
+  },
+  {
+    value: 'EasternEuropean',
+    name: 'Eastern European'
   },
   {
     value: 'European',
@@ -100,15 +160,67 @@ export const cuisineList = [
     name: 'German'
   },
   {
+    value: 'Greek',
+    name: 'Greek'
+  },
+  {
+    value: 'Indian',
+    name: 'Indian'
+  },
+  {
+    value: 'Irish',
+    name: 'Irish'
+  },
+  {
     value: 'Italian',
     name: 'Italian'
+  },
+  {
+    value: 'Japanese',
+    name: 'Japanese'
   },
   {
     value: 'Jewish',
     name: 'Jewish'
   },
   {
+    value: 'Korean',
+    name: 'Korean'
+  },
+  {
+    value: 'LatinAmerican',
+    name: 'Latin American'
+  },
+  {
     value: 'Mediterranean',
     name: 'Mediterranean'
+  },
+  {
+    value: 'Mexican',
+    name: 'Mexican'
+  },
+  {
+    value: 'MiddleEastern',
+    name: 'Middle Eastern'
+  },
+  {
+    value: 'Nordic',
+    name: 'Nordic'
+  },
+  {
+    value: 'Southern',
+    name: 'Southern'
+  },
+  {
+    value: 'Spanish',
+    name: 'Spanish'
+  },
+  {
+    value: 'Thai',
+    name: 'Thai'
+  },
+  {
+    value: 'Vietnamese',
+    name: 'Vietnamese'
   }
 ]

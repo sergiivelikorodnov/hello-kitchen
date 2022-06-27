@@ -14,16 +14,15 @@ import styles from './filter.module.scss'
 type FiterProps = {
   setRecipes: (arg: SingleRecipeType[]) => void
   recipes: SingleRecipeType[]
-  setIsFetching: (arg0: boolean) => void
+  // setIsFetching: (arg0: boolean) => void
 }
 
-function Filter({ setRecipes, recipes, setIsFetching }: FiterProps) {
+function Filter({ setRecipes, recipes /* , setIsFetching */ }: FiterProps) {
   const [searchTitle, setSearchTitle] = useState('')
   const [cuisine, setCuisine] = useState('Select Cuisine')
   const [dish, setDish] = useState('Select Type')
   const [sort, setSort] = useState('Sort')
   const [] = useDebounce(dish, 1000)
-  const originalRecipes = recipes
 
   const getSortedrecipes = (sortType: string, recipes: SingleRecipeType[]): SingleRecipeType[] => {
     switch (sortType) {
@@ -54,7 +53,9 @@ function Filter({ setRecipes, recipes, setIsFetching }: FiterProps) {
           cuisine !== 'Select Cuisine' ? recipe && recipe.cuisines.includes(cuisine.toLocaleLowerCase()) : recipe
         )
 
-      setIsFetching(false)
+      /* setIsFetching(false) */
+      //console.log(`titleMatch=${searchTitle}}&type=${dish}&cuisine=${cuisine}`)
+
       getSortedrecipes(sort, filter)
       setRecipes(filter)
     },

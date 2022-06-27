@@ -40,22 +40,21 @@ function Homepage(): JSX.Element {
         moreData()
       }
     }
-  }, [isFetching])
+  }, [])
 
   function moreData() {
     axios
       .get<RecipesType>(`${API_BASE_URL}${APIRoutes.Recipes}?number=4&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
       .then(({ data }) => {
         dispatch(setRecipes(data))
-
-        setFetchedRecipes(fetchedRecipes && _.uniqBy([...fetchedRecipes, ...data.recipes], 'id'))
         setIsFetching(false)
+        setFetchedRecipes(fetchedRecipes && _.uniqBy([...fetchedRecipes, ...data.recipes], 'id'))
       })
   }
 
   return (
     <div>
-      <Filter setRecipes={setFetchedRecipes} recipes={getFetchedRecipes} setIsFetching={setIsFetching} />
+      <Filter setRecipes={setFetchedRecipes} recipes={getFetchedRecipes} /* setIsFetching={setIsFetching} */ />
       {loading ? (
         <Loader />
       ) : fetchedRecipes && fetchedRecipes.length === 0 ? (
