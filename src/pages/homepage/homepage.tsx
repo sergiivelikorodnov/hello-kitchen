@@ -1,42 +1,53 @@
 import React, { useEffect, useState } from 'react'
 import Filter from '../../components/filter/filter'
-import RecipeItem from '../../components/recipeItem/recipeItem'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
-import { fetchRecipesAction } from '../../store/apiActions'
-import { getAllRecipes, getLoadingStatus } from '../../store/randomRecipesSlice/selectors'
-import { RecipesType, SingleRecipeType } from '../../types/recipe'
+import { fetchComplexSearchAction } from '../../store/apiActions'
+import { SearchRecipeCardType, SearchRecipesType, SingleRecipeType } from '../../types/recipe'
 import Loader from '../../components/loader/loader'
 import NotFound from '../../components/notFound/notFound'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 import axios from 'axios'
 import { APIRoutes } from '../../config/apiRoutes'
-import { API_BASE_URL } from '../../consts/const'
-import { clearRecipesArray, setRecipes } from '../../store/randomRecipesSlice/randomRecipesSlice'
+import { API_BASE_URL, NUMBER_LOADMORE_RECIPES } from '../../consts/const'
 import styles from './homepage.module.scss'
-const _ = require('lodash')
+import {
+  getSearchLoadedRecipes,
+  getSearchLoadingStatus,
+  getSearchOffset,
+  getSearchRecipes,
+  getSearchTotalSearch
+} from '../../store/complexSearchSlice/selectors'
+import RecipeItemSearch from '../../components/RecipeItemSearch/recipeItemSearch'
+import { setLoadMoreSearchRecipes, setSearchRecipes } from '../../store/complexSearchSlice/complexSearchSlice'
 
 function Homepage(): JSX.Element {
   const dispatch = useAppDispatch()
-  const getFetchedRecipes = useAppSelector(getAllRecipes)
-  const loading = useAppSelector(getLoadingStatus)
-  const [fetchedRecipes, setFetchedRecipes] = useState<SingleRecipeType[]>([])
+  const getFetchedRecipes = useAppSelector(getSearchRecipes)
+  const offset = useAppSelector(getSearchOffset)
+  const loading = useAppSelector(getSearchLoadingStatus)
+  const loadedRecipesNumber = useAppSelector(getSearchLoadedRecipes)
+  const totalSearchRecipes = useAppSelector(getSearchTotalSearch)
+  const [fetchedRecipes, setFetchedRecipes] = useState<SearchRecipeCardType[]>([])
+  const [query, setQuery] = useState<string>('titleMatch=')
 
   const [isFetching, setIsFetching] = useInfiniteScroll(moreData)
 
-  useEffect(() => {
-    return () => {
-      dispatch(clearRecipesArray())
-      dispatch(fetchRecipesAction())
-    }
-  }, [dispatch])
+  let ignore = false
 
   useEffect(() => {
-    setFetchedRecipes(_.uniqBy(getFetchedRecipes, 'id'))
+    if (!ignore) dispatch(fetchComplexSearchAction(query))
+    return () => {
+      ignore = true
+    }
+  }, [dispatch, query])
+
+  useEffect(() => {
+    setFetchedRecipes(getFetchedRecipes)
   }, [getFetchedRecipes])
 
   useEffect(() => {
     return () => {
-      if (isFetching) {
+      if (isFetching && loadedRecipesNumber <= totalSearchRecipes) {
         moreData()
       }
     }
@@ -44,24 +55,27 @@ function Homepage(): JSX.Element {
 
   function moreData() {
     axios
-      .get<RecipesType>(`${API_BASE_URL}${APIRoutes.Recipes}?number=4&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
+      .get<SearchRecipesType>(
+        `${API_BASE_URL}${APIRoutes.ComplexSearch}${query}&offset=${offset}&number=${NUMBER_LOADMORE_RECIPES}&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`
+      )
       .then(({ data }) => {
-        dispatch(setRecipes(data))
+        dispatch(setLoadMoreSearchRecipes(data))
         setIsFetching(false)
-        setFetchedRecipes(fetchedRecipes && _.uniqBy([...fetchedRecipes, ...data.recipes], 'id'))
+        setFetchedRecipes(fetchedRecipes && [...fetchedRecipes, ...data.results])
       })
   }
 
   return (
     <div>
-      <Filter setRecipes={setFetchedRecipes} recipes={getFetchedRecipes} /* setIsFetching={setIsFetching} */ />
+      <Filter setQuery={setQuery} />
       {loading ? (
         <Loader />
       ) : fetchedRecipes && fetchedRecipes.length === 0 ? (
         <NotFound />
       ) : (
         <div className={styles.rGrid}>
-          {fetchedRecipes && fetchedRecipes.map(recipe => recipe && <RecipeItem key={recipe.id} recipe={recipe} />)}
+          {fetchedRecipes &&
+            fetchedRecipes.map(recipe => recipe && <RecipeItemSearch key={recipe.id} recipe={recipe} />)}
         </div>
       )}
     </div>

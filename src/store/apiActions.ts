@@ -1,23 +1,10 @@
 import { APIRoutes } from '../config/apiRoutes'
 import { ThunkActionResult } from '../types/action'
 import { toast } from 'react-toastify'
-
-import { setRecipes, setLoading } from './randomRecipesSlice/randomRecipesSlice'
-import { RecipesType, SimilarRecipesType, SingleRecipeType } from '../types/recipe'
-import { NotificationMessage, toastPosition } from '../consts/const'
+import { RecipesType, SearchRecipesType, SimilarRecipesType, SingleRecipeType } from '../types/recipe'
+import { NotificationMessage, NUMBER_LOADMORE_RECIPES, NUMBER_RECIPES, toastPosition } from '../consts/const'
 import { setRecipeInfo, setSimilarRecipes, setSingleRecipeLoading } from './singleRecipeSlice/singleRecipeSlice'
-
-export const fetchRecipesAction =
-  (): ThunkActionResult =>
-  async (dispatch, _getState, api): Promise<void> => {
-    dispatch(setLoading())
-    await api
-      .get<RecipesType>(`${APIRoutes.Recipes}?number=8&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
-      .then(({ data }) => {
-        dispatch(setRecipes(data))
-      })
-      .catch(() => toast.error(NotificationMessage.Error, toastPosition))
-  }
+import { setSearchLoading, setSearchRecipes } from './complexSearchSlice/complexSearchSlice'
 
 export const fetchRecipeInfoAction =
   (id: string): ThunkActionResult =>
@@ -36,7 +23,7 @@ export const fetchSimilarRecipesAction =
   async (dispatch, _getState, api): Promise<void> => {
     dispatch(setSingleRecipeLoading())
     await api
-      .get<SimilarRecipesType>(`${id}${APIRoutes.SimilarRecipes}?number=4&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
+      .get<SimilarRecipesType>(`${id}${APIRoutes.SimilarRecipes}?number=${NUMBER_LOADMORE_RECIPES}&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
       .then(({ data }) => {
         dispatch(setSimilarRecipes(data))
       })
@@ -47,11 +34,11 @@ export const fetchSimilarRecipesAction =
 export const fetchComplexSearchAction =
   (query: string): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
-    dispatch(setLoading())
+    dispatch(setSearchLoading())
     await api
-      .get<RecipesType>(`${APIRoutes.ComplexSearch}${query}&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
+      .get<SearchRecipesType>(`${APIRoutes.ComplexSearch}${query}&number=${NUMBER_RECIPES}&apiKey=${process.env.REACT_APP_AUTH_TOKEN_KEY}`)
       .then(({ data }) => {
-        dispatch(setRecipes(data))
+        dispatch(setSearchRecipes(data))
       })
       .catch(() => toast.error(NotificationMessage.Error, toastPosition))
   }

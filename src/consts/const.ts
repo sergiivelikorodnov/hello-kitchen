@@ -11,6 +11,9 @@ export const toastPosition = {
   position: toast.POSITION.TOP_CENTER
 }
 
+export const NUMBER_RECIPES = 8
+export const NUMBER_LOADMORE_RECIPES = 4
+
 export const dishesList = [
   {
     value: '',
@@ -105,12 +108,16 @@ export const sortList = [
     name: 'Price'
   },
   {
-    value: 'health',
-    name: 'Health'
+    value: 'healthiness',
+    name: 'Healthiness'
   },
   {
-    value: 'time-cooking',
-    name: 'Time Cooking'
+    value: 'total-fat',
+    name: 'Total Fat'
+  },
+  {
+    value: 'calories',
+    name: 'Calories'
   }
 ]
 

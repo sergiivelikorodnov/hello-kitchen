@@ -124,6 +124,20 @@ export type RecipesType = {
   recipes: SingleRecipeType[]
 }
 
+export type SearchRecipeCardType = {
+  id: number
+  title: string
+  imageType: string
+  image: string
+}
+
+export type SearchRecipesType = {
+  number: number
+  offset: number
+  results: SearchRecipeCardType[]
+  totalResults: number
+}
+
 export type SimilarRecipeType = {
   id: number
   title: string
@@ -134,3 +148,11 @@ export type SimilarRecipeType = {
 }
 
 export type SimilarRecipesType = SimilarRecipeType[]
+
+
+export type SingleRecipeSearchType = {
+  id: number
+  title: string
+  image: string
+  imageType: string
+} | null

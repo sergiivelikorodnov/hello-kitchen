@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
-import randomRecipesSlice from './randomRecipesSlice/randomRecipesSlice'
+import complexSearchSlice from './complexSearchSlice/complexSearchSlice'
 import singleRecipeSlice from './singleRecipeSlice/singleRecipeSlice'
 
 export enum StoreNameSpace {
-  RandomRecipes = 'RANDOM_RECIPES',
+  ComplexSearch = 'COMPLEX_SEARCH_RECIPES',
   RecipeInfo = 'RECIPE_INFO'
 }
 
 export const rootReducer = combineReducers({
-  [StoreNameSpace.RandomRecipes]: randomRecipesSlice,
-  [StoreNameSpace.RecipeInfo]: singleRecipeSlice
+  [StoreNameSpace.RecipeInfo]: singleRecipeSlice,
+  [StoreNameSpace.ComplexSearch]: complexSearchSlice
 })

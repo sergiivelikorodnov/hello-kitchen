@@ -1,65 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import { cuisineList, dishesList, SortingType, sortList } from '../../consts/const'
+import { cuisineList, dishesList, sortList } from '../../consts/const'
 import Dropdowns from '../dropdowns/dropdowns'
-import { SingleRecipeType } from '../../types/recipe'
 import { useDebounce, useDebouncedCallback } from 'use-debounce'
-import {
-  getSortRecipesByHealthScore,
-  getSortRecipesByPopularity,
-  getSortRecipesByPrice,
-  getSortRecipesByTimeCooking
-} from '../../utils/sort'
 import styles from './filter.module.scss'
 
 type FiterProps = {
-  setRecipes: (arg: SingleRecipeType[]) => void
-  recipes: SingleRecipeType[]
-  // setIsFetching: (arg0: boolean) => void
+  setQuery: (arg0: string) => void
 }
 
-function Filter({ setRecipes, recipes /* , setIsFetching */ }: FiterProps) {
+function Filter({ setQuery }: FiterProps) {
   const [searchTitle, setSearchTitle] = useState('')
   const [cuisine, setCuisine] = useState('Select Cuisine')
   const [dish, setDish] = useState('Select Type')
-  const [sort, setSort] = useState('Sort')
+  const [sort, setSort] = useState('')
   const [] = useDebounce(dish, 1000)
 
-  const getSortedrecipes = (sortType: string, recipes: SingleRecipeType[]): SingleRecipeType[] => {
-    switch (sortType) {
-      case SortingType.POPULAR:
-        return getSortRecipesByPopularity(recipes)
-      case SortingType.PRICE:
-        return getSortRecipesByPrice(recipes)
-      case SortingType.HEALTH:
-        return getSortRecipesByHealthScore(recipes)
-      case SortingType.TIME_COOKING:
-        return getSortRecipesByTimeCooking(recipes)
-      default:
-        return recipes
-    }
-  }
-
+  let queryArray: string[] = []
   const debounced = useDebouncedCallback(
     _ => {
-      const filter: SingleRecipeType[] = recipes
-        .slice()
-        .filter(recipe =>
-          searchTitle && searchTitle !== '' ? recipe && recipe.title.toLowerCase().includes(searchTitle) : recipe
-        )
-        .filter(recipe =>
-          dish !== 'Select Type' ? recipe && recipe.dishTypes.includes(dish.toLocaleLowerCase()) : recipe
-        )
-        .filter(recipe =>
-          cuisine !== 'Select Cuisine' ? recipe && recipe.cuisines.includes(cuisine.toLocaleLowerCase()) : recipe
-        )
+      searchTitle !== '' ? queryArray.push(`titleMatch=${searchTitle}`) : queryArray.push(`titleMatch=`)
+      dish !== 'Select Type' ? queryArray.push(`type=${dish}`) : ''
+      cuisine !== 'Select Cuisine' ? queryArray.push(`cuisine=${cuisine}`) : ''
+      sort !== 'Sort' ? queryArray.push(`sort=${sort}`) : ''
+      const query = queryArray.join('&')
 
-      /* setIsFetching(false) */
-      //console.log(`titleMatch=${searchTitle}}&type=${dish}&cuisine=${cuisine}`)
-
-      getSortedrecipes(sort, filter)
-      setRecipes(filter)
+      setQuery(query)
     },
-    100,
+    500,
     { maxWait: 2000 }
   )
 

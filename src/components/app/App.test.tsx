@@ -32,9 +32,9 @@ describe('Render Home page', () => {
     </Provider>
   )
 
-  it('should render "12 cards" correctly', () => {
+  it('should render "4 cards" correctly', () => {
     render(fakeApp)
-    expect(screen.getAllByTestId('recipeCard')).toHaveLength(12)
+    expect(screen.getAllByTestId('recipeCard')).toHaveLength(4)
   })
 
   it('should render Logo', () => {

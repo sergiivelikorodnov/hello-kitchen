@@ -1,0 +1,40 @@
+@use '../../consts/variables.scss' as *;
+
+.rItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 1.5rem;
+  background: #fff;
+  overflow: hidden;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+
+  img {
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+}
+
+.rImage {
+  width: 100%;
+}
+
+.rContent {
+  padding: 2rem;
+  font-size: 16px;
+
+  p {
+    padding-bottom: 20px;
+  }
+}
+
+.rTitle {
+  font-size: 1.8rem;
+  padding-bottom: 20px;
+
+  a {
+    color: $primary-blue;
+    font-weight: $fw-bold;
+    font-family: $family;
+  }
+}

@@ -21,7 +21,7 @@ const middlewares = [thunk.withExtraArgument(api)]
 const mockStore = configureMockStore<RootState, Action, ThunkDispatch<RootState, typeof api, Action>>(middlewares)
 
 describe('Home Page render', () => {
-  it('should render filter and 12 cards', () => {
+  it('should render filter and 4 cards', () => {
     const store = mockStore(fakeStateRecipes)
 
     render(
@@ -34,6 +34,6 @@ describe('Home Page render', () => {
 
     expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
 
-    expect(screen.getAllByTestId('recipeCard')).toHaveLength(12)
+    expect(screen.getAllByTestId('recipeCard')).toHaveLength(4)
   })
 })

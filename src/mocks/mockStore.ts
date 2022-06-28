@@ -1,11 +1,15 @@
-import { SimilarRecipesType, SingleRecipeType } from '../types/recipe'
+import { SearchRecipeCardType, SimilarRecipesType, SingleRecipeType } from '../types/recipe'
 import { recipesMocks } from './recipesMock'
+import { searchRecipesMock } from './searchRecipesMock'
 import { similarRecipesMock } from './similarRecipesMock'
 
 export type fakeStateType = {
-  RANDOM_RECIPES: {
-    recipes: SingleRecipeType[]
+  COMPLEX_SEARCH_RECIPES: {
+    results: SearchRecipeCardType[]
     loading: boolean
+    offset: number
+    number: number
+    totalResults: number
   }
   RECIPE_INFO: {
     recipe: SingleRecipeType | null
@@ -15,9 +19,12 @@ export type fakeStateType = {
 }
 
 export const fakeStateRecipes: fakeStateType = {
-  RANDOM_RECIPES: {
-    recipes: recipesMocks.recipes,
-    loading: false
+  COMPLEX_SEARCH_RECIPES: {
+    results: searchRecipesMock.results,
+    loading: false,
+    offset: 4,
+    number: 4,
+    totalResults: 5220,
   },
   RECIPE_INFO: {
     recipe: recipesMocks.recipes[0],
@@ -27,9 +34,12 @@ export const fakeStateRecipes: fakeStateType = {
 }
 
 export const fakeStateLoading: fakeStateType = {
-  RANDOM_RECIPES: {
-    recipes: recipesMocks.recipes,
-    loading: true
+  COMPLEX_SEARCH_RECIPES: {
+    results: searchRecipesMock.results,
+    loading: true,
+    offset: 4,
+    number: 4,
+    totalResults: 5220,
   },
   RECIPE_INFO: {
     recipe: recipesMocks.recipes[0],
