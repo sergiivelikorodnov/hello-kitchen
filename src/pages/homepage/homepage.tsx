@@ -13,7 +13,7 @@ import { APIRoutes } from '../../config/apiRoutes'
 import { API_BASE_URL } from '../../consts/const'
 import { clearRecipesArray, setRecipes } from '../../store/randomRecipesSlice/randomRecipesSlice'
 import styles from './homepage.module.scss'
-const _ = require('lodash')
+import _ from 'lodash'
 
 function Homepage(): JSX.Element {
   const dispatch = useAppDispatch()

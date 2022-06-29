@@ -1,6 +1,5 @@
 import LeftOutlined from '@ant-design/icons/lib/icons/LeftOutlined'
-import React from 'react'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import SimilarRecipe from '../../components/similarRecipe/similarRecipe'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'

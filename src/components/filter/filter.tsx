@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { cuisineList, dishesList, SortingType, sortList } from '../../consts/const'
 import Dropdowns from '../dropdowns/dropdowns'
 import { SingleRecipeType } from '../../types/recipe'
-import { useDebounce, useDebouncedCallback } from 'use-debounce'
+import { useDebouncedCallback } from 'use-debounce'
 import {
   getSortRecipesByHealthScore,
   getSortRecipesByPopularity,
@@ -14,15 +14,13 @@ import styles from './filter.module.scss'
 type FiterProps = {
   setRecipes: (arg: SingleRecipeType[]) => void
   recipes: SingleRecipeType[]
-  // setIsFetching: (arg0: boolean) => void
 }
 
-function Filter({ setRecipes, recipes /* , setIsFetching */ }: FiterProps) {
+function Filter({ setRecipes, recipes }: FiterProps) {
   const [searchTitle, setSearchTitle] = useState('')
   const [cuisine, setCuisine] = useState('Select Cuisine')
   const [dish, setDish] = useState('Select Type')
   const [sort, setSort] = useState('Sort')
-  const [] = useDebounce(dish, 1000)
 
   const getSortedrecipes = (sortType: string, recipes: SingleRecipeType[]): SingleRecipeType[] => {
     switch (sortType) {
@@ -40,7 +38,7 @@ function Filter({ setRecipes, recipes /* , setIsFetching */ }: FiterProps) {
   }
 
   const debounced = useDebouncedCallback(
-    _ => {
+    () => {
       const filter: SingleRecipeType[] = recipes
         .slice()
         .filter(recipe =>
@@ -52,9 +50,6 @@ function Filter({ setRecipes, recipes /* , setIsFetching */ }: FiterProps) {
         .filter(recipe =>
           cuisine !== 'Select Cuisine' ? recipe && recipe.cuisines.includes(cuisine.toLocaleLowerCase()) : recipe
         )
-
-      /* setIsFetching(false) */
-      //console.log(`titleMatch=${searchTitle}}&type=${dish}&cuisine=${cuisine}`)
 
       getSortedrecipes(sort, filter)
       setRecipes(filter)
@@ -72,22 +67,22 @@ function Filter({ setRecipes, recipes /* , setIsFetching */ }: FiterProps) {
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchTitle(e.target.value.toLowerCase())
-    debounced(e.target.value)
+    debounced()
   }
 
   const handleCuisine = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCuisine(e.target.value)
-    debounced(e.target.value)
+    debounced()
   }
 
   const handleDish = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDish(e.target.value)
-    debounced(e.target.value)
+    debounced()
   }
 
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value)
-    debounced(e.target.value)
+    debounced()
   }
 
   return (

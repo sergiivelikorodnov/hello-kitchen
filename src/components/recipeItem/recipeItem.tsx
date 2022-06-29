@@ -12,7 +12,7 @@ type RecipeItemProps = {
 
 function RecipeItem({ recipe }: RecipeItemProps): JSX.Element {
   if (recipe) {
-    const { title, image, summary, id, readyInMinutes, servings } = recipe
+    const { title, image, summary, id, readyInMinutes } = recipe
     return (
       <article className={styles.rItem} data-testid='recipeCard'>
         <div>

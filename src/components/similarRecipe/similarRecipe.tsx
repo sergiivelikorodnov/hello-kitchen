@@ -11,7 +11,7 @@ type RecipeItemProps = {
 
 function SimilarRecipe({ recipe }: RecipeItemProps): JSX.Element {
   if (recipe) {
-    const { title, imageType, id, readyInMinutes, servings } = recipe
+    const { title, imageType, id, readyInMinutes } = recipe
     return (
       <article className={styles.sItem}>
         <Link to={`/recipe/${id}`}>

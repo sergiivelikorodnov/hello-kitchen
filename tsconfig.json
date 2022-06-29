@@ -28,6 +28,6 @@
   },
   "include": [
     "src",
-    "typed-css.d.ts"
+    "declarations.d.ts"
   ]
 }
