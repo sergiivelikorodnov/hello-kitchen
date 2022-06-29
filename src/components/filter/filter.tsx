@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { cuisineList, dishesList, sortList } from '../../consts/const'
 import Dropdowns from '../dropdowns/dropdowns'
-import { useDebounce, useDebouncedCallback } from 'use-debounce'
+import { useDebouncedCallback } from 'use-debounce'
 import styles from './filter.module.scss'
 
 type FiterProps = {
@@ -13,12 +13,13 @@ function Filter({ setQuery }: FiterProps) {
   const [cuisine, setCuisine] = useState('Select Cuisine')
   const [dish, setDish] = useState('Select Type')
   const [sort, setSort] = useState('')
-  const [] = useDebounce(dish, 1000)
 
-  let queryArray: string[] = []
+  const queryArray: string[] = []
   const debounced = useDebouncedCallback(
-    _ => {
-      searchTitle !== '' ? queryArray.push(`titleMatch=${searchTitle}`) : queryArray.push(`titleMatch=`)
+    () => {
+      searchTitle !== ''
+        ? queryArray.push(`titleMatch=${searchTitle}`)
+        : queryArray.push('titleMatch=')
       dish !== 'Select Type' ? queryArray.push(`type=${dish}`) : ''
       cuisine !== 'Select Cuisine' ? queryArray.push(`cuisine=${cuisine}`) : ''
       sort !== 'Sort' ? queryArray.push(`sort=${sort}`) : ''
@@ -27,40 +28,45 @@ function Filter({ setQuery }: FiterProps) {
       setQuery(query)
     },
     500,
-    { maxWait: 2000 }
+    { maxWait: 2000 },
   )
 
   useEffect(
     () => () => {
       debounced.flush()
     },
-    [debounced]
+    [debounced],
   )
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchTitle(e.target.value.toLowerCase())
-    debounced(e.target.value)
+    debounced()
   }
 
   const handleCuisine = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCuisine(e.target.value)
-    debounced(e.target.value)
+    debounced()
   }
 
   const handleDish = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDish(e.target.value)
-    debounced(e.target.value)
+    debounced()
   }
 
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value)
-    debounced(e.target.value)
+    debounced()
   }
 
   return (
     <div className={styles.sContainer}>
       <div className={styles.sFilter}>
-        <input className={styles.sInput} value={searchTitle} placeholder='Search' onChange={handleClick} />
+        <input
+          className={styles.sInput}
+          value={searchTitle}
+          placeholder='Search'
+          onChange={handleClick}
+        />
         <Dropdowns options={cuisineList} handleChange={handleCuisine} value={cuisine} />
         <Dropdowns options={dishesList} handleChange={handleDish} value={dish} />
       </div>

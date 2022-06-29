@@ -1,4 +1,4 @@
-import { RecipesType } from "../types/recipe";
+import { RecipesType } from '../types/recipe';
 
 export const recipesMocks:RecipesType = {
   recipes: [

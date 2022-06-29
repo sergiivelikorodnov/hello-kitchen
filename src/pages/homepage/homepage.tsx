@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Filter from '../../components/filter/filter'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchComplexSearchAction } from '../../store/apiActions'
-import { SearchRecipeCardType, SearchRecipesType, SingleRecipeType } from '../../types/recipe'
+import { SearchRecipeCardType, SearchRecipesType } from '../../types/recipe'
 import Loader from '../../components/loader/loader'
 import NotFound from '../../components/notFound/notFound'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
@@ -18,7 +18,7 @@ import {
   getSearchTotalSearch
 } from '../../store/complexSearchSlice/selectors'
 import RecipeItemSearch from '../../components/RecipeItemSearch/recipeItemSearch'
-import { setLoadMoreSearchRecipes, setSearchRecipes } from '../../store/complexSearchSlice/complexSearchSlice'
+import { setLoadMoreSearchRecipes } from '../../store/complexSearchSlice/complexSearchSlice'
 
 function Homepage(): JSX.Element {
   const dispatch = useAppDispatch()

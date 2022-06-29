@@ -100,24 +100,136 @@ export const sortList = [
     name: 'Select Sorting'
   },
   {
-    value: 'popularity',
-    name: 'Popularity'
+    value: 'meta-score',
+    name: 'Meta Score'
   },
   {
-    value: 'price',
-    name: 'Price'
+    value: 'popularity',
+    name: 'Popularity'
   },
   {
     value: 'healthiness',
     name: 'Healthiness'
   },
   {
-    value: 'total-fat',
-    name: 'Total Fat'
+    value: 'price',
+    name: 'Price'
+  },
+  {
+    value: 'time',
+    name: 'Time'
+  },
+  {
+    value: 'random',
+    name: 'Random'
+  },
+  {
+    value: 'max-used-ingredients',
+    name: 'Max used ingredients'
+  },
+  {
+    value: 'min-missing-ingredients',
+    name: 'Min missing ingredients'
+  },
+  {
+    value: 'alcohol',
+    name: 'Alcohol'
+  },
+  {
+    value: 'caffeine',
+    name: 'Caffeine'
+  },
+  {
+    value: 'copper',
+    name: 'Copper'
+  },
+  {
+    value: 'energy',
+    name: 'Energy'
   },
   {
     value: 'calories',
     name: 'Calories'
+  },
+  {
+    value: 'calcium',
+    name: 'Calcium'
+  },
+  {
+    value: 'carbohydrates',
+    name: 'Carbohydrates'
+  },
+  {
+    value: 'carbs',
+    name: 'Carbs'
+  },
+  {
+    value: 'choline',
+    name: 'Choline'
+  },
+  {
+    value: 'cholesterol',
+    name: 'Cholesterol'
+  },
+  {
+    value: 'total-fat',
+    name: 'Total fat'
+  },
+  {
+    value: 'fluoride',
+    name: 'Fluoride'
+  },
+  {
+    value: 'trans-fat',
+    name: 'Trans fat'
+  },
+  {
+    value: 'saturated-fat',
+    name: 'Saturated fat'
+  },
+  {
+    value: 'fiber',
+    name: 'Fiber'
+  },
+  {
+    value: 'folate',
+    name: 'Folate'
+  },
+  {
+    value: 'folic-acid',
+    name: 'Folic acid'
+  },
+  {
+    value: 'iodine',
+    name: 'Iodine'
+  },
+  {
+    value: 'iron',
+    name: 'Iron'
+  },
+  {
+    value: 'magnesium',
+    name: 'Magnesium'
+  },
+  {
+    value: 'protein',
+    name: 'Protein'
+  },
+  {
+    value: 'vitamin-b2',
+    name: 'Vitamin B2'
+  },
+  {
+    value: 'riboflavin',
+    name: 'Riboflavin'
+  },
+  {
+    value: 'sugar',
+    name: 'Sugar'
+  },
+  {
+    value: 'zinc',
+    name: 'Zinc'
   }
 ]
 

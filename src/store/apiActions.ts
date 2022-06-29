@@ -1,7 +1,7 @@
 import { APIRoutes } from '../config/apiRoutes'
 import { ThunkActionResult } from '../types/action'
 import { toast } from 'react-toastify'
-import { RecipesType, SearchRecipesType, SimilarRecipesType, SingleRecipeType } from '../types/recipe'
+import { SearchRecipesType, SimilarRecipesType, SingleRecipeType } from '../types/recipe'
 import { NotificationMessage, NUMBER_LOADMORE_RECIPES, NUMBER_RECIPES, toastPosition } from '../consts/const'
 import { setRecipeInfo, setSimilarRecipes, setSingleRecipeLoading } from './singleRecipeSlice/singleRecipeSlice'
 import { setSearchLoading, setSearchRecipes } from './complexSearchSlice/complexSearchSlice'

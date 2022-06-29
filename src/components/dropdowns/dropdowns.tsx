@@ -11,8 +11,13 @@ type Dropdownsprops = {
 function Dropdowns({ handleChange, value, options }: Dropdownsprops): JSX.Element {
   return (
     <label>
-      <select className={styles.dSelect} value={value} onChange={event => handleChange(event)} data-testid='selectTest'>
-        {options.map(option => (
+      <select
+        className={styles.dSelect}
+        value={value}
+        onChange={(event) => handleChange(event)}
+        data-testid='selectTest'
+      >
+        {options.map((option) => (
           <option key={option.value} data-testid='dropdownTest'>
             {option.name}
           </option>

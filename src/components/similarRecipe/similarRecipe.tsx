@@ -11,11 +11,15 @@ type RecipeItemProps = {
 
 function SimilarRecipe({ recipe }: RecipeItemProps): JSX.Element {
   if (recipe) {
-    const { title, imageType, id, readyInMinutes, servings } = recipe
+    const { title, imageType, id, readyInMinutes } = recipe
     return (
       <article className={styles.sItem}>
         <Link to={`/recipe/${id}`}>
-          <img src={`${API_IMAGE_URL}${id}-${ImageSize.XL}.${imageType}`} alt={title} className={styles.sItem} />
+          <img
+            src={`${API_IMAGE_URL}${id}-${ImageSize.XL}.${imageType}`}
+            alt={title}
+            className={styles.sItem}
+          />
         </Link>
         <div className={styles.sContent}>
           <div className={styles.sTitle}>
