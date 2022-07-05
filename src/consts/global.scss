@@ -62,17 +62,6 @@ body {
     list-style: none;
   }
 
-  .avatar_container {
-    position: relative;
-  }
-
-  .online {
-    color: green;
-    position: absolute;
-    left: 35px;
-    top: 35px;
-  }
-
   ::-webkit-scrollbar {
     width: 0;
     /* Remove scrollbar space */
