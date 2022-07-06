@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { DropdownList } from '../../types/dropdowns'
 import styles from './dropdowns.module.scss'
 
@@ -11,18 +11,23 @@ type Dropdownsprops = {
 function Dropdowns({ handleChange, value, options }: Dropdownsprops): JSX.Element {
   return (
     <label>
-      <select
-        className={styles.dSelect}
-        value={value}
-        onChange={(event) => handleChange(event)}
-        data-testid='selectTest'
-      >
-        {options.map((option) => (
-          <option key={option.value} data-testid='dropdownTest'>
-            {option.name}
-          </option>
-        ))}
-      </select>
+      {useMemo(
+        () => (
+          <select
+            className={styles.dSelect}
+            value={value}
+            onChange={event => handleChange(event)}
+            data-testid='selectTest'
+          >
+            {options.map(option => (
+              <option key={option.value} data-testid='dropdownTest'>
+                {option.name}
+              </option>
+            ))}
+          </select>
+        ),
+        [value]
+      )}
     </label>
   )
 }
