@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import parse from 'html-react-parser'
 import { SingleRecipeType } from '../../types/recipe'
 import { Link } from 'react-router-dom'
@@ -35,4 +35,4 @@ function RecipeItem({ recipe }: RecipeItemProps): JSX.Element {
   }
 }
 
-export default RecipeItem
+export default memo(RecipeItem)

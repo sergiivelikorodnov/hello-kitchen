@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { SingleRecipeSearchType } from '../../types/recipe'
 import { Link } from 'react-router-dom'
 import styles from './recipeItemSearch.module.scss'
@@ -29,4 +29,4 @@ function RecipeItemSearch({ recipe }: RecipeItemProps): JSX.Element {
   }
 }
 
-export default RecipeItemSearch
+export default memo(RecipeItemSearch)
